@@ -1,6 +1,6 @@
 [user]
-    name = Dave James Miller
-    email = dave@davejamesmiller.com
+	name = Sam Scholfield
+	email = sam@alberon.co.uk
 
 [core]
     excludesfile = ~/.gitignore-global
@@ -45,7 +45,7 @@
     web = instaweb
 
 [github]
-    user = davejamesmiller
+	user = samscholfield
 
 [browser "none"]
     cmd = git-web-browser
