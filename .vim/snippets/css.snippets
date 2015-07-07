@@ -1,15 +1,15 @@
+snippet !
+	!important
 snippet {
 	{
 		${1}
 	}
 snippet .
-	.${1:class}
-	{
+	.${1:class} {
 		${2}
 	}
 snippet #
-	#${1:id}
-	{
+	#${1:id} {
 		${2}
 	}
 snippet /* /*
@@ -24,6 +24,8 @@ snippet --
 	------------------------------------------------------------------------------*/
 snippet :
 	: ${1};
+snippet a:h
+	a:hover
 snippet absolute
 	position: absolute;
 snippet background
@@ -76,6 +78,10 @@ snippet bgr inherit
 	background-repeat: inherit;
 snippet block
 	display: block;
+snippet body
+	body {
+		${1}
+	}
 snippet bold
 	font-weight: bold;
 snippet border
@@ -90,6 +96,10 @@ snippet bordert
 	border-top: ${1:1px solid #000};${2}
 snippet bottom
 	bottom: ${1};${2}
+snippet box-sizing
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 snippet cboth
 	clear: both;
 snippet charset
@@ -152,6 +162,12 @@ snippet direction
 	direction: ${1:rtl};
 snippet display
 	display: ${1:none};
+snippet div
+	div {
+		${1}
+	}
+snippet em
+	font-style: italic;
 snippet fleft
 	float: left;
 snippet float
@@ -172,10 +188,38 @@ snippet font-weight
 	font-weight: ${1:bold};
 snippet fright
 	float: right;
+snippet h1
+	h1 {
+		${1}
+	}
+snippet h2
+	h2 {
+		${1}
+	}
+snippet h3
+	h3 {
+		${1}
+	}
+snippet h4
+	h4 {
+		${1}
+	}
+snippet h5
+	h5 {
+		${1}
+	}
+snippet h6
+	h6 {
+		${1}
+	}
 snippet height
 	height: ${1}${2:px};${3}
 snippet hide
 	display: none;
+snippet html
+	html {
+		${1}
+	}
 snippet i
 	!important
 snippet import
@@ -219,8 +263,7 @@ snippet max-width
 snippet mbottom
 	margin-bottom: ${1};${2}
 snippet media
-	@media ${1:screen}
-	{
+	@media ${1:screen} {
 		${2}
 	}
 snippet minh
@@ -309,8 +352,7 @@ snippet position static (default)
 snippet pright
 	padding-right: ${1};${2}
 snippet print
-	@media print
-	{
+	@media print {
 		${1}
 	}
 snippet ptop
@@ -322,12 +364,19 @@ snippet rgb
 snippet right
 	right: ${1};${2}
 snippet screen
-	@media screen
-	{
+	@media screen {
+		${1}
+	}
+snippet span
+	span {
 		${1}
 	}
 snippet static
 	position: static;
+snippet strike
+	text-decoration: line-through;
+snippet strong
+	font-weight: bold;
 snippet style
 	font-style: ${1:italic};
 snippet t
