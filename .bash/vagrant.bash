@@ -4,14 +4,19 @@ vagrant() {
     # No parameters
     if [ $# -eq 0 ]; then
         command vagrant
-        echo
-        echo "Shortcuts:"
-        echo "     u       up"
-        echo "     p       provision"
-        echo "     s       ssh"
-        echo "     st      status"
-        echo "     d       suspend (down)"
-        echo "     hosts   update /etc/hosts (hostmanager)"
+
+        # 1 = Help message displayed (or maybe other errors?)
+        # 127 = Command not found
+        if [ $? -eq 1 ]; then
+            echo "Shortcuts:"
+            echo "     d        suspend (down)"
+            echo "     hosts    update /etc/hosts (hostmanager)"
+            echo "     p        provision"
+            echo "     s        ssh"
+            echo "     st       status"
+            echo "     u        up"
+        fi
+
         return
     fi
 
@@ -20,20 +25,21 @@ vagrant() {
     shift
 
     case "$cmd" in
-        u)     cmd=up          ;;
-        p)     cmd=provision   ;;
-        st)    cmd=status      ;;
-        d)     cmd=suspend     ;;
-        down)  cmd=suspend     ;;
-        stop)  cmd=halt        ;;
-        hosts) cmd=hostmanager ;;
+        d)     cmd=suspend       ;;
+        down)  cmd=suspend       ;;
+        gs)    cmd=global-status ;;
+        hosts) cmd=hostmanager   ;;
+        p)     cmd=provision     ;;
+        st)    cmd=status        ;;
+        stop)  cmd=halt          ;;
+        u)     cmd=up            ;;
     esac
 
     # Special case for the 's' command
     if [ "$cmd" = "s" ]; then
         if [ $# -gt 0 ]; then
             # 'v s <cmd>' => Treat the extra parameters as a command
-            command vagrant ssh -c "$*"
+            command vagrant ssh -c "cd /vagrant; $*"
             return
         elif [ -z "$TMUX" ]; then
             # Not running tmux - Run tmux inside Vagrant (if available)
@@ -55,3 +61,9 @@ vagrant() {
     # Other commands
     command vagrant "$cmd" "$@"
 }
+
+# Workaround for Vagrant bug on Cygwin
+# https://github.com/mitchellh/vagrant/issues/6026
+if $CYGWIN; then
+    export VAGRANT_DETECTED_OS=cygwin
+fi

@@ -44,9 +44,11 @@
     conf = config --global --edit
     cp = cherry-pick
     d = diff                               #--find-copies --irreversible-delete
-    dc = diff --cached                     #--find-copies --irreversible-delete
-    dcw = diff --cached --ignore-all-space #--find-copies --irreversible-delete
+    dn = diff --stat
     dw = diff --ignore-all-space           #--find-copies --irreversible-delete
+    dc = diff --cached                     #--find-copies --irreversible-delete
+    dcn = diff --cached --stat
+    dcw = diff --cached --ignore-all-space #--find-copies --irreversible-delete
     edit = commit --amend --reset-author
     f = fetch -v --prune
     fe = fetch -v --prune
@@ -106,6 +108,11 @@
 
 [merge]
     conflictstyle = diff3
+    tool = kdiff3
+
+[mergetool]
+    # Also in kdiff3: Settings > Configure > Directory > Uncheck "Backup files (.orig)"
+    keepBackup = false
 
 [rerere]
     enabled = true
