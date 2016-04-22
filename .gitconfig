@@ -1,6 +1,6 @@
 [user]
     name = Sam Scholfield
-    email = sam@alberon.co.uk
+    email = sam@samscholfield.co.uk
 
 [core]
     excludesfile = ~/.gitignore-global
